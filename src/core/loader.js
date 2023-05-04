@@ -7,26 +7,26 @@ const guildIds = ['1033699857237557259', '894585999139700736']
 
 const updateSlashCommands = async(commands) => {
     const rest = new REST({version:10}).setToken(process.env.TOKEN)
-     await rest.put(
-         Routes.applicationGuildCommands(
-           process.env.APPLICATION_ID, 
-           '1033699857237557259',
-         ),
-         { 
-        body: commands,
-         },
-    )
-    // for (const guildId of guildIds) {
-        // await rest.put(
-        //   Routes.applicationGuildCommands(
-            // process.env.APPLICATION_ID, 
-            // guildId
-        // ),
-        // { 
-            // body: commands,
-        // },
-        // )
-    // }
+    //  await rest.put(
+    //      Routes.applicationGuildCommands(
+    //        process.env.APPLICATION_ID, 
+    //        '1033699857237557259',
+    //      ),
+    //      { 
+    //     body: commands,
+    //      },
+    // )
+    for (const guildId of guildIds) {
+        await rest.put(
+          Routes.applicationGuildCommands(
+            process.env.APPLICATION_ID, 
+            guildId
+        ),
+        { 
+            body: commands,
+        },
+        )
+    }
 }
 
 

@@ -10,12 +10,13 @@ import {loadCommands, loadEvents} from '@/core/loader'
 vueInit()
 dotenv.config()
 
+
 loadCommands()
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] })
 const appStore = useAppStore()
 appStore.client = client
-
+//module.exports = { client } //新家的
 loadEvents()
 
 client.login(process.env.TOKEN);
