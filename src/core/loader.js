@@ -18,7 +18,7 @@ const updateSlashCommands = async(commands) => {
     // )
     for (const guildId of guildIds) {
         await rest.put(
-          Routes.applicationGuildCommands(
+          Routes.applicationGuildCommands(  
             process.env.APPLICATION_ID, 
             guildId
         ),
@@ -55,6 +55,7 @@ export const loadEvents = async() => {
     const appStore = useAppStore()
     const client = appStore.client
     const files = await fg('./src/events/**/index.js')
+
     for(const file of files){
         const eventFile = await import(file)
         
@@ -65,4 +66,5 @@ export const loadEvents = async() => {
             client.on(eventFile.event.name, eventFile.action)
         }
     }
+
 }
